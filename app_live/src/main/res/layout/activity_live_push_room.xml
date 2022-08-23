@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_blue_600">
+
+    <!--直播间的层级不要随意改动，有特殊需求商榷下-->
+
+    <!--最底层，预留背景图显示，手势滑动的监听布局-->
+    <FrameLayout
+        android:id="@+id/rootTouchContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--主播开播视频区域，主播摄像头预览的内容布局-->
+    <include
+        layout="@layout/include_pushroom_preview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--直播间主体，后续清屏的内容，目前和观众端一致，fragment_liveroom_main.xml-->
+    <FrameLayout
+        android:id="@+id/rootRoomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--关闭按钮,放最最上层，清屏和滑动房间都要保留-->
+    <include
+        layout="@layout/include_room_close_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--最上层是系统弹窗，各种业务弹窗，注意考虑弹窗时机，尽量避免重叠-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

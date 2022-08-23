@@ -1,0 +1,21 @@
+<resources>
+
+    <style name="Widget.Theme.FlatArchitecture.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.Theme.FlatArchitecture.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="BoldTextStyle" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/font_bold.otf</item>
+    </style>
+
+    <style name="NormalTextStyle" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/font_normal.otf</item>
+    </style>
+</resources>

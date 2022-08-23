@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="24dp">
+
+    <!--预留，用于按钮tips提示，或者输入框？-->
+
+    <!--底部按钮-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootRoomBtnContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/live_room_bottom_btn_width"
+        android:layout_centerVertical="true"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivRoomChat"
+            android:layout_width="@dimen/live_room_bottom_btn_width"
+            android:layout_height="@dimen/live_room_bottom_btn_width"
+            android:src="@mipmap/ic_live_room_btn_chat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivRoomGift"
+            android:layout_width="@dimen/live_room_bottom_btn_width"
+            android:layout_height="@dimen/live_room_bottom_btn_width"
+            android:layout_marginEnd="10dp"
+            android:src="@mipmap/ic_live_room_btn_gift"
+            app:layout_constraintEnd_toStartOf="@+id/ivRoomMicVoice"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivRoomMicVoice"
+            android:layout_width="@dimen/live_room_bottom_btn_width"
+            android:layout_height="@dimen/live_room_bottom_btn_width"
+            android:src="@mipmap/ic_live_pushroom_btn_mic_on"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,2 +1,3 @@
-# DQLive
-一线大厂直播应用实战，直播间架构设计，声网推流，Exo拉流播放，应有尽有。
+# FlatArchitecture
+
+Android通用架构设计。落地场景以直播为例。

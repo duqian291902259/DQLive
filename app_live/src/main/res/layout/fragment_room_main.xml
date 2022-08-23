@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootRoomContainer"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:background="@color/common_color_m_4">
+
+    <!--直播间的层级不要随意改动，有特殊需求商榷下,这个布局是主播端和观众端公用的
+     如果公用的UI里面还有差异，就建议使用viewStub，各个端按需懒加载创建了。-->
+
+    <!--主播离开的效果，在视频上方-->
+    <FrameLayout
+        android:id="@+id/rootHostLeaveContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--顶部区域-->
+    <include layout="@layout/include_room_top_layout" />
+
+    <!--公屏聊天区域：左下角-->
+    <include layout="@layout/include_room_public_chat_layout" />
+
+    <!--右边区域-->
+    <FrameLayout
+        android:id="@+id/rootCommonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--直播间全屏通用模块1-->
+    <include layout="@layout/include_room_common_layout" />
+
+    <!--底部按钮区域，主播端和观众端根据差异增加-->
+    <FrameLayout
+        android:id="@+id/rootBottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--礼物特效区域-->
+    <FrameLayout
+        android:id="@+id/rootEffectContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--礼物面板显示区域-->
+    <FrameLayout
+        android:id="@+id/rootGiftPanelContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--如果主播端和观众端有差异，请按层级需要在这个xml里面占位，使用viewStub懒加载创建了。-->
+    <!--<ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inflatedId="@layout/fragment_main" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

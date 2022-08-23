@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">@color/common_color_5</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">@color/common_color_5</color>
+    <color name="pay_colorPrimary">@color/colorPrimary</color>
+
+    <!--设计规范颜色start-->
+    <color name="common_button_color_start">#B81BEC</color><!-- 主题色按钮渐变色start -->
+    <color name="common_button_color_end">#4A1DE7</color>  <!-- 主题色按钮渐变色end -->
+    <color name="common_color_assist_start">#FFE34F</color><!-- 辅助色按钮渐变色start -->
+    <color name="common_color_assist_end">#FF5858</color>  <!-- 辅助色按钮渐变色end -->
+    <color name="common_color_5">#952CFF</color>  <!-- 主题色 -->
+    <color name="common_color_5_dis_enable">#7FFF4A8B</color>  <!-- 不可点击主题色主题色 -->
+    <color name="common_color_m_2">#262628</color>  <!-- 二级色 -->
+    <color name="common_color_m_3">#909094</color>  <!-- 三级色 -->
+    <color name="common_color_m_4">#B6B7BC</color>  <!-- 四级色 -->
+    <!--设计规范颜色end-->
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="transparent">#00000000</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="color_vip_bg_color">#1D1613</color>
+
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
+    <!--黑色，透明值-->
+    <color name="color_alpha_black_10">#E6000000</color>
+    <color name="color_alpha_black_20">#cc000000</color>
+    <color name="color_alpha_black_30">#B3000000</color>
+    <color name="color_alpha_black_40">#99000000</color>
+    <color name="color_alpha_black_50">#80000000</color>
+    <color name="color_alpha_black_60">#66000000</color>
+    <color name="color_alpha_black_70">#4D000000</color>
+    <color name="color_alpha_black_80">#33000000</color>
+    <color name="color_alpha_black_90">#1A000000</color>
+
+    <!--白色 不透明值-->
+    <color name="color_alpha_white_10">#1Affffff</color>
+    <color name="color_alpha_white_20">#33ffffff</color>
+    <color name="color_alpha_white_30">#4Dffffff</color>
+    <color name="color_alpha_white_40">#66ffffff</color>
+    <color name="color_alpha_white_50">#80ffffff</color>
+    <color name="color_alpha_white_60">#99ffffff</color>
+    <color name="color_alpha_white_70">#B3ffffff</color>
+    <color name="color_alpha_white_80">#ccffffff</color>
+    <color name="color_alpha_white_90">#E6ffffff</color>
+
+</resources>

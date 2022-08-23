@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_overlay">
+
+    <!--直播间的层级不要随意改动，有特殊需求商榷下-->
+
+    <!--最底层，预留背景图显示，手势滑动的监听布局-->
+    <FrameLayout
+        android:id="@+id/rootTouchContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--视频Player区域，播放器相关的布局，全屏幕范围-->
+    <include layout="@layout/include_liveroom_player" />
+
+    <!--直播间主体，按需初始化，后续清屏的部分都要放入这里面，
+    参见布局 fragment_liveroom_main.xml-->
+    <FrameLayout
+        android:id="@+id/rootRoomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--直播间大特效，清屏也播放的区域，也可以用windowManager实现-->
+    <FrameLayout
+        android:id="@+id/rootBigEffectContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--上下滑动房间，loading效果，盖住直播间主体-->
+    <FrameLayout
+        android:id="@+id/rootSwipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--关闭按钮,放最最上层，清屏和滑动房间都要保留-->
+    <include
+        layout="@layout/include_room_close_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--最上层是系统弹窗，各种业务弹窗，注意考虑弹窗时机，尽量避免重叠-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
