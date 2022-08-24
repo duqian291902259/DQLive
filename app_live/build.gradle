@@ -1,5 +1,4 @@
 plugins {
-    //id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
@@ -11,9 +10,6 @@ if (isLiveModuleLib.toBoolean()) {
 } else {
     apply plugin: 'com.android.application'
 }
-
-
-//apply plugin:'kotlin-android-extensions'
 
 ext {
     kotlin_version = '1.4.31'
