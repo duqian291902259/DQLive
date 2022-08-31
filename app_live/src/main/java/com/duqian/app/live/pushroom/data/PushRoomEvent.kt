@@ -17,4 +17,6 @@ object PushRoomEventCode {
     private const val EVENT_ID_PUSH_ROOM_BASE = 2000 //主播端模块基准id
     const val EVENT_ID_PUSH_ROOM_START_LIVE = EVENT_ID_PUSH_ROOM_BASE + 1  //开播事件
     const val EVENT_ID_PUSH_ROOM_LEAVE = EVENT_ID_PUSH_ROOM_BASE + 2 // 主播主动离开的事件
+    const val EVENT_PUSH_MIC_BTN_CLICKED = EVENT_ID_PUSH_ROOM_BASE + 3 // 主播禁音/恢复声音
+
 }

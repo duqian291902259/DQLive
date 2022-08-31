@@ -31,13 +31,11 @@ class AgoraPusherImpl : IBasePusher {
     }
 
     private var mHandler = Handler(Looper.getMainLooper())
-    private val mAppId = "eeed2eb052d24a4bb13b0aa9e6d014d5"
+    private val mAppId = "aa5637f7878d4668b444fc13e85309d9"
     private val mChannelName = "duqian"
     private val mUid = 20220820
     private val mToken =
-        "007eJxTYHh7o0zUZyW3dWdTUUjV7cWzeIzW3ukN4JCUmD6p+8+t7UIKDKmpqSlGqUkGpkYpRiaJJklJhsZJBomJlqlmKQaGJimmU1L/JQlv/5/ku1qfgREKQXw2hpTSwszEPAYGAMJtIyU="
-
-    //"006eeed2eb052d24a4bb13b0aa9e6d014d5IAD1HUJUYAOrGSxe7G5fKFX+Lu7WouKyWFLzTeZjOkdvub+i/FEAAAAAEACGukDP9pPwYgEAAQD1k/Bi"
+        "007eJxTYLDVMtvWyM17/ojstAWVz6VuHRBvVi859bC4hH917ObpbFsVGBITTc2MzdPMLcwtUkzMzCySTExM0pINjVMtTI0NLFMseZ/wJ/eaCiY/enWThZEBAkF8NoaU0sLMxDwGBgA/oiBb"
     private var mRtcEngine: RtcEngine? = null
     private lateinit var mContext: Context
     private var mVideoContainer: ViewGroup? = null
@@ -197,19 +195,19 @@ class AgoraPusherImpl : IBasePusher {
     override fun onLifecycleChanged(event: Int) {
         if (event == LifecycleEvent.ON_PAUSE) {
             stopPreview()
-            //mRtcEngine?.enableLocalVideo(false)
-            //startPushToCDN(false)
         } else if (event == LifecycleEvent.ON_RESUME) {
             startPreview()
-            /*if (mCurrentLocalVideoState == Constants.LOCAL_VIDEO_STREAM_ERROR_CAPTURE_FAILURE
-                || mCurrentLocalVideoState == Constants.LOCAL_VIDEO_STREAM_STATE_STOPPED ||
-                mCurrentErrorState == Constants.LOCAL_VIDEO_STREAM_ERROR_CAPTURE_FAILURE
-            ) {
-                mRtcEngine?.enableLocalVideo(false)
-                mRtcEngine?.enableLocalVideo(true)
-                startPushToCDN(true)
-            }*/
         }
+    }
+
+    override fun adjustRecordingSignalVolume(volume: Int): Int {
+        return mRtcEngine?.adjustRecordingSignalVolume(volume) ?: ResultCode.STATUS_FAILED
+    }
+
+    private var mCallback: ILiveCallback? = null
+
+    override fun setCallBack(callback: ILiveCallback?) {
+        this.mCallback = callback
     }
 
     private fun getUrl(): String {

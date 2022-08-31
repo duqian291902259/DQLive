@@ -68,4 +68,13 @@ interface IBasePusher {
      */
     fun onLifecycleChanged(@LifecycleEvent event: Int)
 
+    /**
+     * 推流声音
+     */
+    fun adjustRecordingSignalVolume(volume: Int): Int
+
+    /**
+     * 外部设置推流整个过程中的状态，action值越大，流程越后面
+     */
+    fun setCallBack(callback: ILiveCallback?)
 }

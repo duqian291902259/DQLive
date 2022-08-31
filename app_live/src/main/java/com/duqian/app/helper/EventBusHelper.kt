@@ -17,12 +17,8 @@ object EventBusHelper {
         eventBus.post(event)
     }
 
-    fun notifyEvent(obj: Any?) {
-        eventBus.post(obj)
-    }
-
-    fun notifyStickyEvent(obj: Any?) {
-        eventBus.postSticky(obj)
+    fun notifyStickyEvent(event: BaseEvent) {
+        eventBus.postSticky(event)
     }
 
     fun bind(obj: Any): EventBusHelper {

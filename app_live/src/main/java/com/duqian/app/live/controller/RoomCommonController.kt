@@ -13,6 +13,7 @@ import com.duqian.app.live.base_comm.LiveEventKey
 import com.duqian.app.live.base_comm.RoomType
 import com.duqian.app.live.utils.LiveEventBus
 import com.duqian.app.live.utils.dp
+import com.duqian.app.live.utils.setViewVisible
 
 /**
  * Description:直播间一些通用的处理逻辑
@@ -29,8 +30,9 @@ class RoomCommonController(view: View, owner: LifecycleOwner) : BaseController(v
             mRootView as ViewGroup,
             true
         )
-//            rootView.findViewById(R.id.rootCommonContainer) as ViewGroup,
+
         //databinding层级最高的问题,父布局是Include的话，会直接加载直播间布局的最上层
+        binding.tvRoomCommonTips.setViewVisible(!isPushRoom())
         binding.tvRoomCommonTips.text = "点击模拟切换直播间"
         binding.tvRoomCommonTips.setOnClickListener {
             mGlobalViewModel?.roomType?.value = RoomType.ROOM_TYPE_DOUBLE

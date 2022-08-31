@@ -79,7 +79,6 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
     private fun initPlayer() {
         //player
         playerService?.initPlayer(mContext, playerView, rootRoomLoading)
-        playerService?.startPlay("rtmp://examplepull.agoramdn.com/live/duqian")
 
         playerService?.addCallback(object : PlayerCallback {
             override fun onLoadingChanged(isLoading: Boolean) {
@@ -102,6 +101,8 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
                 rootRoomLoading.setViewVisible(false)
             }
         })
+        playerService?.startPlay(TEST_URL)
+        Log.d(TAG, "Pull stream $TEST_URL")
     }
 
     private fun handlePullSuccess() {
@@ -115,7 +116,7 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
 
     override fun onResume() {
         if (!isTestMp4) {
-            playerService?.startPlay("rtmp://examplepull.agoramdn.com/live/duqian")
+            playerService?.startPlay(TEST_URL)
         }
     }
 
@@ -145,5 +146,6 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
 
     companion object {
         private const val TAG = "RoomLivePlayerController-dq"
+        private const val TEST_URL = "rtmp://examplepull.agoramdn.com/live/duqian"
     }
 }

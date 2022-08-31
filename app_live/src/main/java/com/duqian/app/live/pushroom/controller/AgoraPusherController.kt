@@ -1,5 +1,6 @@
 package com.duqian.app.live.pushroom.controller
 
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.lifecycle.LifecycleOwner
@@ -60,21 +61,41 @@ class AgoraPusherController(view: View, owner: LifecycleOwner) : BaseController(
 
                 mAgoraPush?.startPushToCDN(true)
             }
+
+            PushRoomEventCode.EVENT_PUSH_MIC_BTN_CLICKED -> {
+                val isMicEnable = event.data as Boolean
+                mAgoraPush?.enableAudioVideo(
+                    false,
+                    isMicEnable
+                )
+                Log.d(TAG, "isMicEnable=$isMicEnable")
+                if (isMicEnable) {
+                    mAgoraPush?.adjustRecordingSignalVolume(100)
+                } else {
+                    mAgoraPush?.adjustRecordingSignalVolume(0)
+                }
+            }
         }
     }
 
     override fun onResume() {
         // TODO: 声网的这个处理有问题，停止预览，无法恢复，暂时不处理
-        //mAgoraPush?.startPreview()
+        val startPreview = mAgoraPush?.startPreview()
+        Log.d(TAG, "startPreview=$startPreview")
         //mAgoraPush?.onLifecycleChanged(LifecycleEvent.ON_RESUME)
     }
 
     override fun onPause() {
-        //mAgoraPush?.stopPreview()
+        val stopPreview = mAgoraPush?.stopPreview()
+        Log.d(TAG, "startPreview=$stopPreview")
         //mAgoraPush?.onLifecycleChanged(LifecycleEvent.ON_PAUSE)
     }
 
     override fun onDestroy() {
         mAgoraPush?.release()
+    }
+
+    companion object {
+        private const val TAG = "dq-agora-pusher"
     }
 }
