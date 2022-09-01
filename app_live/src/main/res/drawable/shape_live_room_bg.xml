@@ -9,6 +9,6 @@
     <!--图片-->
     <item
         android:gravity="top">
-        <bitmap android:src="@mipmap/bg_live_room_loading_default" />
+        <bitmap android:src="@mipmap/bg_dq_live_splash" />
     </item>
 </layer-list>
