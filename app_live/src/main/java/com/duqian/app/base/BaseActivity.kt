@@ -7,7 +7,6 @@ import android.os.Looper
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.duqian.app.helper.EventBusHelper
-import com.duqian.app.helper.PageRecordHelper
 import com.gyf.immersionbar.ktx.immersionBar
 import com.duqian.app.live.utils.LiveEventBus
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
@@ -41,27 +40,6 @@ abstract class BaseActivity : AppCompatActivity() {
         initView()
         initListener()
         observerData()
-        handleActivityRecord()
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-    }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
     }
 
     override fun finish() {
@@ -70,10 +48,6 @@ abstract class BaseActivity : AppCompatActivity() {
         mHandler.removeCallbacksAndMessages(null)
         //确保去除粘性事件
         LiveEventBus.get().clear()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
@@ -121,19 +95,4 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleActivityRecord() {
-        if (isRecordPage()) {
-            PageRecordHelper.record(getPageCode())
-        }
-    }
-
-    //该界面的编号
-    open fun getPageCode(): Int {
-        return -1
-    }
-
-    //是否记录该界面
-    open fun isRecordPage(): Boolean {
-        return false
-    }
 }

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.duqian.app.base.BaseActivity
 import com.duqian.app.live.R
 import com.duqian.app.helper.CommonUtils
 import com.duqian.app.helper.ToastUtils
@@ -23,26 +24,21 @@ import javax.inject.Inject
  * E-mail: duqian2010@gmail.com
  */
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks,
-    EasyPermissions.RationaleCallbacks {//: BaseActivity(),
+class MainActivity : BaseActivity(), EasyPermissions.PermissionCallbacks,
+    EasyPermissions.RationaleCallbacks {
 
     @Inject
     lateinit var navigator: AppNavigator
 
-    // TODO-dq: 权限申请的接口可以移动到基类
-
     lateinit var mainFragment: MainFragment
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        /*this.window.setFlags(
+        this.window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )*/
+        )
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initMainFragment()
-
-        requirePermission()
     }
 
     private fun requirePermission() {
@@ -62,13 +58,19 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks,
         }
     }
 
-    /*override fun getLayoutId(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.activity_main
+    }
+
+    override fun initData() {
+        initMainFragment()
+
+        requirePermission()
     }
 
     override fun isStatusBarDark(): Boolean {
         return false
-    }*/
+    }
 
     private fun initMainFragment() {
         mainFragment = MainFragment.newInstance()
@@ -85,12 +87,6 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks,
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
-
-    /*@AfterPermissionGranted(RoomConstants.REQUEST_CODE_CAMERA_AND_AUDIO)
-    private fun onPermission() {
-        ToastUtils.show("Granted camera permission")
-        mainFragment.startLiveActivity()
-    }*/
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
         if (requestCode == RoomConstants.REQUEST_CODE_CAMERA_AND_AUDIO) {
