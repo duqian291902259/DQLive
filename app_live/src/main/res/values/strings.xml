@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">DQLive</string>
+    <string name="title_activity_live_room">LiveRoomActivity</string>
+    <string name="text_camera_and_audio_rationale">Need camera and audio permissions to start live</string>
+    <string name="text_external_storage_permission_rationale">Need sdcard permissions to play local video</string>
+</resources>

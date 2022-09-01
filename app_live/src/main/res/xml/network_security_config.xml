@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">miloji.live</domain>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+        <domain-config cleartextTrafficPermitted="true">
+            <domain includeSubdomains="true">res.miloji.live</domain>
+            <domain includeSubdomains="true">test-api.miloji.live</domain>
+            <domain includeSubdomains="true">ws.miloji.live</domain>
+        </domain-config>
+    </domain-config>
+
+    <!--todo-dq  网络配置，路径，包，应用相关的配置修改-->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">android.bugly.qq.com</domain>
+        <domain includeSubdomains="true">api-test.gameschalo.com</domain>
+        <domain includeSubdomains="true">log.test.v-mate.mobi</domain>
+        <domain includeSubdomains="true">test-api-in.cbrcg.com</domain>
+        <domain includeSubdomains="true">test.appnow.store</domain>
+        <domain includeSubdomains="true">pay.bmartpay.com</domain>
+        <domain includeSubdomains="true">bigfun.xiaoxiangwan.com</domain>
+        <domain includeSubdomains="true">res-fq.miloji.live</domain>
+        <domain includeSubdomains="true">www.miloji.live</domain>
+    </domain-config>
+</network-security-config>

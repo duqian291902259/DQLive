@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootPublicChatContainer"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="97dp"
+    app:flow_horizontalBias="0.7"
+    android:layout_marginBottom="75dp"
+    tools:background="@drawable/shape_live_top_anchor_bg"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+
+    <!--单独一个布局，控制容器样式，简化fragment_room_main.xml。
+    子布局在 PublicChatFragment 中-->
