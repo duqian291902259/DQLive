@@ -3,6 +3,8 @@ package com.duqian.app.live.pushroom
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.os.Bundle
 import com.duqian.app.live.R
 import com.duqian.app.helper.RegisterEvent
 import com.duqian.app.live.fragment.RoomMainFragment
@@ -33,6 +35,11 @@ class PushRoomActivity : BaseLiveActivity() {
 
     //声网推流
     private var mAgoraPusherController: AgoraPusherController? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_live_push_room

@@ -15,6 +15,7 @@ import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.PlayerView
 import com.duqian.live.mediaplayer.ILivePlayerService
 import com.duqian.live.mediaplayer.PlayerCallback
+import com.duqian.live.pusher.AgoraPusherImpl
 import java.lang.Exception
 
 /**
@@ -146,6 +147,6 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
 
     companion object {
         private const val TAG = "RoomLivePlayerController-dq"
-        private const val TEST_URL = "rtmp://examplepull.agoramdn.com/live/duqian"
+        private const val TEST_URL = AgoraPusherImpl.TEST_RTMP_URL
     }
 }

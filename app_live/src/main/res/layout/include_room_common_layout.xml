@@ -5,7 +5,6 @@
 
     <data />
 
-    <!-- todo-dq databinging 层级问题 android:background="@color/teal_700"-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/wrapCommonLayout"
         android:layout_width="match_parent"

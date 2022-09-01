@@ -38,7 +38,7 @@ class RoomMainFragment : BaseLiveFragment() {
 
     override fun initControllers() {
         //通用模块
-        mRoomCommonController = RoomCommonController(rootView, this)
+        mRoomCommonController = RoomCommonController(rootCommonContainer, this)
         //主播信息
         mAnchorInfoController = AnchorInfoController(rootLiveTopContainer, this)
         //公屏

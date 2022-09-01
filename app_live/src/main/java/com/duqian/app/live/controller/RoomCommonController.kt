@@ -27,7 +27,7 @@ class RoomCommonController(view: View, owner: LifecycleOwner) : BaseController(v
         val binding: IncludeRoomCommonLayoutBinding = DataBindingUtil.inflate(
             mActivity.layoutInflater,
             R.layout.include_room_common_layout,
-            mRootView as ViewGroup,
+            rootView as ViewGroup,
             true
         )
 

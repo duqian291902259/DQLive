@@ -3,6 +3,7 @@ package com.duqian.app
 import android.Manifest
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.duqian.app.live.R
@@ -33,7 +34,11 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks,
     lateinit var mainFragment: MainFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //window.addFlags(Window.fla)
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        /*this.window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )*/
         setContentView(R.layout.activity_main)
         initMainFragment()
 

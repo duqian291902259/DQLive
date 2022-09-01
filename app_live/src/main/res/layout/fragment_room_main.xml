@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rootRoomContainer"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootRoomContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -25,12 +25,15 @@
 
     <!--右边区域-->
     <FrameLayout
-        android:id="@+id/rootCommonContainer"
+        android:id="@+id/rootActivityContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <!--直播间全屏通用模块1-->
-    <include layout="@layout/include_room_common_layout" />
+    <FrameLayout
+        android:id="@+id/rootCommonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <!--底部按钮区域，主播端和观众端根据差异增加-->
     <FrameLayout

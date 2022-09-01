@@ -3,6 +3,7 @@ package com.duqian.live.pusher
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.text.TextUtils
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -28,6 +29,7 @@ import io.agora.rtc.video.VideoEncoderConfiguration.STANDARD_BITRATE
 class AgoraPusherImpl : IBasePusher {
     companion object {
         private const val TAG = "AgoraPusher-dq"
+        const val TEST_RTMP_URL = "rtmp://examplepush.agoramdn.com/live/duqian"
     }
 
     private var mHandler = Handler(Looper.getMainLooper())
@@ -39,7 +41,6 @@ class AgoraPusherImpl : IBasePusher {
     private var mRtcEngine: RtcEngine? = null
     private lateinit var mContext: Context
     private var mVideoContainer: ViewGroup? = null
-    private val AGORA_CHANNEL_PREFIX = "rtmps://examplepush.agoramdn.com/live/"
 
     private var mCurrentLocalVideoState = 0
     private var mCurrentErrorState = 0
@@ -62,7 +63,7 @@ class AgoraPusherImpl : IBasePusher {
             mCurrentErrorState = error
             val tips = "onLocalVideoStateChanged,localVideoState=$localVideoState, error=$error"
             Log.d(TAG, tips)
-            showToast(tips)
+            showToast(tips, false)
         }
 
         override fun onConnectionLost() {
@@ -96,13 +97,14 @@ class AgoraPusherImpl : IBasePusher {
         }
     }
 
-    private fun showToast(msg: String) {
+    private fun showToast(msg: String, isToast: Boolean = true) {
         mHandler.post {
-            Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show()
+            if (isToast)
+                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show()
         }
     }
 
-    override fun init(context: Context, videoContainer: ViewGroup) {
+    override fun init(context: Context, videoContainer: ViewGroup): Int {
         this.mVideoContainer = videoContainer
         this.mContext = context
 
@@ -154,42 +156,31 @@ class AgoraPusherImpl : IBasePusher {
                     it.addView(surfaceView, lp)
                 }
 
-                //设置摄像头
-                /*val direction = CameraCapturerConfiguration.CAMERA_DIRECTION.CAMERA_FRONT
-                val dimensions = CameraCapturerConfiguration.CaptureDimensions(
-                    videoContainer.measuredWidth,
-                    videoContainer.measuredHeight
-                )
-                it.setCameraCapturerConfiguration(
-                    CameraCapturerConfiguration(
-                        dimensions,
-                        direction
-                    )
-                )*/
                 //渲染本地视频。RENDER_MODE_FIT
                 it.setupLocalVideo(VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_HIDDEN, mUid))
 
                 // 开启本地视频预览。
                 it.startPreview()
-
             }
         } catch (e: Exception) {
             Log.e(TAG, "init onError $e")
+            return ResultCode.STATUS_FAILED
         }
+        return ResultCode.STATUS_OK
     }
 
     /**
      * push to cdn
      */
-    override fun startPushToCDN(isPublish: Boolean) {
-        val url = getUrl()
+    override fun startPushToCDN(url: String?): Int {
+        //val url = getUrl()
         Log.e(TAG, "init url= $url")
-        if (isPublish) {
+        val result = if (!TextUtils.isEmpty(url)) {
             mRtcEngine?.addPublishStreamUrl(url, false)
         } else {
             mRtcEngine?.removePublishStreamUrl(url)
-
         }
+        return result ?: ResultCode.STATUS_FAILED
     }
 
     override fun onLifecycleChanged(event: Int) {
@@ -210,57 +201,57 @@ class AgoraPusherImpl : IBasePusher {
         this.mCallback = callback
     }
 
-    private fun getUrl(): String {
-        return AGORA_CHANNEL_PREFIX + mChannelName
-    }
-
-    override fun startEchoTest(isTest: Boolean) {
-        if (isTest) {
+    override fun startEchoTest(isTest: Boolean): Int {
+        val result = if (isTest) {
             mRtcEngine?.startEchoTest(10)
         } else {
             mRtcEngine?.stopEchoTest()
             //mRtcEngine?.stopLastmileProbeTest()
         }
+        return result ?: ResultCode.STATUS_FAILED
     }
 
-    override fun enableAudioVideo(isVideo: Boolean, isEnable: Boolean) {
-        if (isVideo) {
+    override fun enableAudioVideo(isVideo: Boolean, isEnable: Boolean): Int {
+        val result = if (isVideo) {
             if (isEnable) mRtcEngine?.enableVideo() else mRtcEngine?.disableVideo()
         } else {
             if (isEnable) mRtcEngine?.enableAudio() else mRtcEngine?.disableAudio()
         }
+        return result ?: ResultCode.STATUS_FAILED
     }
 
-    override fun startPreview() {
+    override fun startPreview(): Int {
         val startPreview = mRtcEngine?.startPreview()
         showToast("startPreview=$startPreview")
+        return startPreview ?: ResultCode.STATUS_FAILED
     }
 
-    override fun stopPreview() {
+    override fun stopPreview(): Int {
         val stopPreview = mRtcEngine?.stopPreview()
         showToast("stopPreview=$stopPreview")
+        return stopPreview ?: ResultCode.STATUS_FAILED
     }
 
-    override fun joinChannel() {
+    override fun joinChannel(): Int {
         //指定用户ID，并确保其在频道内的唯一性。
         val option = ChannelMediaOptions()
         option.autoSubscribeAudio = true
         option.autoSubscribeVideo = true
-        mRtcEngine?.joinChannel(mToken, mChannelName, null, mUid)
+        return mRtcEngine?.joinChannel(mToken, mChannelName, null, mUid) ?: ResultCode.STATUS_FAILED
     }
 
-    override fun muteLocalAudioStream(isMute: Boolean) {
-        mRtcEngine?.muteLocalAudioStream(isMute)
+    override fun muteLocalAudioStream(isMute: Boolean): Int {
+        return mRtcEngine?.muteLocalAudioStream(isMute) ?: ResultCode.STATUS_FAILED
     }
 
-    override fun leaveChannel() {
-        mRtcEngine?.leaveChannel()
+    override fun leaveChannel(): Int {
+        return mRtcEngine?.leaveChannel() ?: ResultCode.STATUS_FAILED
     }
 
     override fun release() {
         //mRtcEngine?.stopLastmileProbeTest()
         mRtcEngine?.stopPreview()
-        mRtcEngine?.removePublishStreamUrl(getUrl())
+        mRtcEngine?.removePublishStreamUrl(TEST_RTMP_URL)
         mRtcEngine?.leaveChannel()
         mHandler.post(RtcEngine::destroy)
         mRtcEngine = null

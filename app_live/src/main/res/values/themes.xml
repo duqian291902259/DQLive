@@ -15,7 +15,8 @@
     </style>
 
     <!-- Base application theme. -->
-    <style name="Theme.FlatArchitecture" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+   <!-- <style name="Theme.FlatArchitecture" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
+    <style name="Theme.FlatArchitecture" parent="@android:style/Theme.NoTitleBar.Fullscreen">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
