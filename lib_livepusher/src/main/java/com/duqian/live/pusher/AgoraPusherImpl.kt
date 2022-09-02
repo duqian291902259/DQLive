@@ -29,15 +29,14 @@ import io.agora.rtc.video.VideoEncoderConfiguration.STANDARD_BITRATE
 class AgoraPusherImpl : IBasePusher {
     companion object {
         private const val TAG = "AgoraPusher-dq"
-        const val TEST_RTMP_URL = "rtmp://examplepush.agoramdn.com/live/duqian"
+        const val TEST_PUBLISH_URL = "rtmps://examplepush.agoramdn.com/live/duqian"
     }
 
     private var mHandler = Handler(Looper.getMainLooper())
     private val mAppId = "aa5637f7878d4668b444fc13e85309d9"
     private val mChannelName = "duqian"
     private val mUid = 20220820
-    private val mToken =
-        "007eJxTYLDVMtvWyM17/ojstAWVz6VuHRBvVi859bC4hH917ObpbFsVGBITTc2MzdPMLcwtUkzMzCySTExM0pINjVMtTI0NLFMseZ/wJ/eaCiY/enWThZEBAkF8NoaU0sLMxDwGBgA/oiBb"
+    private val mToken ="007eJxTYDi3eE2ww+zAAj3OxJ+ZGkKZPvel4h8Lc3lImVf9lU27ka7AkJhoamZsnmZuYW6RYmJmZpFkYmKSlmxonGphamxgmWK5PlUwWX+7UHLG/t3MjAwQCOKzMaSUFmYm5jEwAAC90R5c"
     private var mRtcEngine: RtcEngine? = null
     private lateinit var mContext: Context
     private var mVideoContainer: ViewGroup? = null
@@ -251,7 +250,7 @@ class AgoraPusherImpl : IBasePusher {
     override fun release() {
         //mRtcEngine?.stopLastmileProbeTest()
         mRtcEngine?.stopPreview()
-        mRtcEngine?.removePublishStreamUrl(TEST_RTMP_URL)
+        mRtcEngine?.removePublishStreamUrl(TEST_PUBLISH_URL)
         mRtcEngine?.leaveChannel()
         mHandler.post(RtcEngine::destroy)
         mRtcEngine = null

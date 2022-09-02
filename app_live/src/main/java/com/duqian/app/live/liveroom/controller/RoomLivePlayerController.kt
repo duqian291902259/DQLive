@@ -147,6 +147,6 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
 
     companion object {
         private const val TAG = "RoomLivePlayerController-dq"
-        private const val TEST_URL = AgoraPusherImpl.TEST_RTMP_URL
+        private const val TEST_URL = "rtmp://examplepull.agoramdn.com/live/duqian"
     }
 }

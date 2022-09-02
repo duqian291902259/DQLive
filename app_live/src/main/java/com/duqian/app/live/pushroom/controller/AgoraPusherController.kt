@@ -13,7 +13,7 @@ import com.duqian.app.live.liveroom.data.LiveRoomEventCode
 import com.duqian.app.live.pushroom.data.PushRoomEvent
 import com.duqian.app.live.pushroom.data.PushRoomEventCode
 import com.duqian.app.live.services.AutoServiceHelper
-import com.duqian.live.pusher.AgoraPusherImpl.Companion.TEST_RTMP_URL
+import com.duqian.live.pusher.AgoraPusherImpl.Companion.TEST_PUBLISH_URL
 import com.duqian.live.pusher.IBasePusher
 import com.duqian.live.pusher.ResultCode
 import org.greenrobot.eventbus.Subscribe
@@ -61,7 +61,7 @@ class AgoraPusherController(view: View, owner: LifecycleOwner) : BaseController(
             PushRoomEventCode.EVENT_ID_PUSH_ROOM_START_LIVE -> {
                 val joinChannel = mAgoraPush?.joinChannel()
                 if (joinChannel == ResultCode.STATUS_OK) {
-                    val startPushToCDN = mAgoraPush?.startPushToCDN(TEST_RTMP_URL)
+                    val startPushToCDN = mAgoraPush?.startPushToCDN(TEST_PUBLISH_URL)
                     Log.d(TAG, "joinChannel=$joinChannel,startPushToCDN=$startPushToCDN")
                 } else {
                     Log.d(TAG, "joinChannel,error=$joinChannel")
