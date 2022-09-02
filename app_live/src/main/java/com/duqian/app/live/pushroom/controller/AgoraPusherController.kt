@@ -38,12 +38,10 @@ class AgoraPusherController(view: View, owner: LifecycleOwner) : BaseController(
 
     override fun initData() {
         super.initData()
-        //todo-dq 接口获取token
-
         mAgoraPush?.init(BaseApplication.instance.baseContext, previewView)
         //禁止声音
-        mAgoraPush?.enableAudioVideo(false, false)
-        mAgoraPush?.muteLocalAudioStream(true)
+        //mAgoraPush?.enableAudioVideo(false, false)
+        //mAgoraPush?.muteLocalAudioStream(true)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -75,11 +73,12 @@ class AgoraPusherController(view: View, owner: LifecycleOwner) : BaseController(
                     isMicEnable
                 )
                 Log.d(TAG, "isMicEnable=$isMicEnable")
-                if (isMicEnable) {
+                mAgoraPush?.muteLocalAudioStream(!isMicEnable)
+                /*if (isMicEnable) {
                     mAgoraPush?.adjustRecordingSignalVolume(100)
                 } else {
                     mAgoraPush?.adjustRecordingSignalVolume(0)
-                }
+                }*/
             }
         }
     }

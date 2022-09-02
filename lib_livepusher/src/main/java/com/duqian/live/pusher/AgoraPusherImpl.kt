@@ -15,6 +15,7 @@ import io.agora.rtc.IRtcEngineEventHandler
 import io.agora.rtc.RtcEngine
 import io.agora.rtc.RtcEngineConfig
 import io.agora.rtc.models.ChannelMediaOptions
+import io.agora.rtc.video.BeautyOptions
 import io.agora.rtc.video.VideoCanvas
 import io.agora.rtc.video.VideoEncoderConfiguration
 import io.agora.rtc.video.VideoEncoderConfiguration.STANDARD_BITRATE
@@ -155,6 +156,8 @@ class AgoraPusherImpl : IBasePusher {
                     it.addView(surfaceView, lp)
                 }
 
+                //默认美颜开启
+                it.setBeautyEffectOptions(true, BeautyOptions())
                 //渲染本地视频。RENDER_MODE_FIT
                 it.setupLocalVideo(VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_HIDDEN, mUid))
 
