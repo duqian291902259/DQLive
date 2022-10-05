@@ -31,22 +31,21 @@ android {
     }
 }
 
-def exoVersion = "2.9.6"
+def exoVersion = "2.18.1"//"2.14.2"
 
 dependencies {
 
-    implementation "androidx.core:core-ktx:1.8.0"
-    implementation "androidx.appcompat:appcompat:1.5.0"
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
 
     //exo
-    api "com.google.android.exoplayer:exoplayer:$exoVersion"
+    //api "com.google.android.exoplayer:exoplayer:$exoVersion"
+    api "com.google.android.exoplayer:exoplayer-core:$exoVersion"
+    api "com.google.android.exoplayer:exoplayer-common:$exoVersion"
+    api "com.google.android.exoplayer:exoplayer-ui:$exoVersion"
     api "com.google.android.exoplayer:extension-rtmp:$exoVersion"
-    //common
-    //api "com.google.android.exoplayer:exoplayer-core:$exoVersion"
-    //api "com.google.android.exoplayer:exoplayer-dash:$exoVersion"
-    //api "com.google.android.exoplayer:exoplayer-ui:$exoVersion"
 
     //autoService
-    kapt "com.google.auto.service:auto-service:1.0-rc6"
-    implementation "com.google.auto.service:auto-service:1.0-rc6"
+    kapt 'com.google.auto.service:auto-service:1.0.1'
+    implementation 'com.google.auto.service:auto-service:1.0.1'
 }

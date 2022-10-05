@@ -14,8 +14,8 @@ import com.duqian.app.live.utils.setViewVisible
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.PlayerView
 import com.duqian.live.mediaplayer.ILivePlayerService
+import com.duqian.live.mediaplayer.PlayState
 import com.duqian.live.mediaplayer.PlayerCallback
-import com.duqian.live.pusher.AgoraPusherImpl
 import java.lang.Exception
 
 /**
@@ -30,7 +30,7 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
     private lateinit var playerView: PlayerView
     private lateinit var rootRoomLoading: View
     private lateinit var ivLoading: View
-    private val playerService = AutoServiceHelper.load(ILivePlayerService::class.java)
+    private val playerService:ILivePlayerService? = AutoServiceHelper.load(ILivePlayerService::class.java)
 
     override fun initView(rootView: View) {
         rootPlayerView = rootView.findViewById(R.id.rootPlayerView)
@@ -79,7 +79,7 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
 
     private fun initPlayer() {
         //player
-        playerService?.initPlayer(mContext, playerView, rootRoomLoading)
+        playerService?.initPlayer(mContext, playerView)
 
         playerService?.addCallback(object : PlayerCallback {
             override fun onLoadingChanged(isLoading: Boolean) {
@@ -88,8 +88,8 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
                 }
             }
 
-            override fun onPlayerStateChanged(playbackState: Int) {
-                if (playbackState == Player.STATE_READY) {
+            override fun onPlayerStateChanged(playbackState: String) {
+                if (playbackState == PlayState.STATE_READY) {
                     handlePullSuccess()
                 } else {
                     rootRoomLoading.setViewVisible(false)
@@ -137,7 +137,7 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
         playerView.setViewVisible(true)
         rootRoomLoading.setViewVisible(false)
         //timeRecords is at its maximum size[64]. Ignore this when unittesting.Source error.
-        playerService?.initPlayer(mContext, playerView, null)
+        playerService?.initPlayer(mContext, playerView)
         playerService?.startPlay("/sdcard/gift.mp4")
     }
 
