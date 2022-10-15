@@ -102,8 +102,8 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
                 rootRoomLoading.setViewVisible(false)
             }
         })
-        playerService?.startPlay(TEST_URL)
-        Log.d(TAG, "Pull stream $TEST_URL")
+        playerService?.startPlay(TEST_URL_FLV)
+        Log.d(TAG, "Pull stream $TEST_URL_FLV")
     }
 
     private fun handlePullSuccess() {
@@ -117,7 +117,7 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
 
     override fun onResume() {
         if (!isTestMp4) {
-            playerService?.startPlay(TEST_URL)
+            playerService?.startPlay(TEST_URL_FLV)
         }
     }
 
@@ -148,5 +148,6 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
     companion object {
         private const val TAG = "RoomLivePlayerController-dq"
         private const val TEST_URL = "rtmp://examplepull.agoramdn.com/live/duqian"
+        private const val TEST_URL_FLV = "http://las-tech.org.cn/kwai/las-test_ld500d.flv"
     }
 }

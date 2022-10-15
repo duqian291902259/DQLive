@@ -3,6 +3,13 @@
 基于声网SDK实现的推拉流，项目虽小，五脏俱全。
 特色：优良的直播间的架构设计，观众端直播间和主播端，模块复用、可扩展性强，自定义生命周期感知的controller组件，实现按钮粒度的逻辑分离、自由组合。
 
+### 项目截图
+![DQLive_Splash.png](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive_Splash.png)
+
+![DQLive_Room.png](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive_Room.png)
+
+![DQLive_Anchor.jpeg](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive_Anchor.jpeg)
+
 ### 直播技术选型
 
 主播端：推流基于声网SDK，然后旁路推流到CDN，所以独特的地方是开播的流程和主播端的音视频处理。其他常规的功能跟观众端类似。
@@ -47,7 +54,8 @@ image.png image.png
 大的UI，请使用ViewStub懒加载布局。
 
 ### 其他
-待更新维护。
+推拉流是正常的，只需要修改推拉流地址即可测试。
+后续持续更新。
 
 duqian2010@gmail.com
 Wechat:AndroidDQ，在路上
