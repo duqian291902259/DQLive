@@ -10,6 +10,8 @@
 
 ![DQLive_Anchor.jpeg](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive_Anchor.jpeg)
 
+视频效果：[DQLive.mp4](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive.mp4)
+
 ### 直播技术选型
 
 主播端：推流基于声网SDK，然后旁路推流到CDN，所以独特的地方是开播的流程和主播端的音视频处理。其他常规的功能跟观众端类似。

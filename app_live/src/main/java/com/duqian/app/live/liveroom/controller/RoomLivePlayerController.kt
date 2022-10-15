@@ -136,6 +136,7 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
     private fun testLocalMp4() {
         playerView.setViewVisible(true)
         rootRoomLoading.setViewVisible(false)
+        playerService?.stopPlay()
         //timeRecords is at its maximum size[64]. Ignore this when unittesting.Source error.
         playerService?.initPlayer(mContext, playerView)
         playerService?.startPlay("/sdcard/gift.mp4")
