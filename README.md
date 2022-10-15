@@ -8,11 +8,7 @@ Github项目地址：[https://github.com/duqian291902259/DQLive](https://github.
 仅供学习交流技术，应用的sdk、资源和图片素材，如有侵权请联系删除。
 
 ### 项目截图
-![DQLive_Splash.png](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive_Splash.png)
-
-![DQLive_Room.png](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive_Room.png)
-
-![DQLive_Anchor.jpeg](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive_Anchor.jpeg)
+![DQLive_Main.png](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive_Main.png)
 
 视频效果：[DQLive.mp4](https://github.com/duqian291902259/DQLive/blob/main/screenshot/DQLive.mp4)
 
