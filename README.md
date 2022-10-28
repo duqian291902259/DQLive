@@ -84,5 +84,3 @@ Github项目地址：[https://github.com/duqian291902259/DQLive](https://github.
 其实还有很多可以加入的功能，如AI主播，换脸等。后续持续更新。
 
 duqian2010@gmail.com
-
-Wechat:AndroidDQ，在路上
