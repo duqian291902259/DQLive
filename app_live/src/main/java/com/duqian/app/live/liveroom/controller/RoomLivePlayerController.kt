@@ -149,6 +149,8 @@ class RoomLivePlayerController(view: View, owner: LifecycleOwner) : BaseControll
     companion object {
         private const val TAG = "RoomLivePlayerController-dq"
         private const val TEST_URL = "rtmp://examplepull.agoramdn.com/live/duqian"
-        private const val TEST_URL_FLV = "http://las-tech.org.cn/kwai/las-test_ld500d.flv"
+        private const val TEST_URL_FLV = "rtmp://play-agora-test.hiiclub.live/live/l_a_259241421"
+        //private const val TEST_URL_FLV = "http://las-tech.org.cn/kwai/las-test_ld500d.flv"
+        //private const val TEST_URL_FLV = "https://res-fq.hiiclub.live/hiiu/content/vid/00/5w/hv3ld100005w.mp4"
     }
 }
