@@ -22,3 +22,4 @@ rootProject.name = "DQLive"
 include ':app_live'
 include ':lib_mediaplayer'
 include ':lib_livepusher'
+include ':nativelib'

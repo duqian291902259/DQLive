@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
 import com.duqian.app.base.BaseActivity
 import com.duqian.app.live.R
 import com.duqian.app.helper.CommonUtils
@@ -13,6 +12,7 @@ import com.duqian.app.helper.ToastUtils
 import com.duqian.app.live.base_comm.RoomConstants
 import com.duqian.app.main.MainFragment
 import com.duqian.app.navigator.AppNavigator
+import com.duqian.nativelib.NativeLib
 import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.EasyPermissions
 import javax.inject.Inject
@@ -66,6 +66,12 @@ class MainActivity : BaseActivity(), EasyPermissions.PermissionCallbacks,
         initMainFragment()
 
         requirePermission()
+
+        testNative()
+    }
+
+    private fun testNative() {
+        ToastUtils.show("Native:${NativeLib().stringFromJNI()}")
     }
 
     override fun isStatusBarDark(): Boolean {
